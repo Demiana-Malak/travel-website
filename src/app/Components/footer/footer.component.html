@@ -1,0 +1,58 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row gy-3">
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="item">
+          <div class="logo">
+            <img src="../../../assets/logo2.png" alt="logo" />
+          </div>
+          <p>Travel helps companies manage payments easily.</p>
+          <div class="social">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin-in"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="company">
+          <h3>Company</h3>
+          <ul>
+            <li><a routerLink="/about">About Us</a></li>
+            <li><a href="#" (click)="$event.preventDefault()">Careers</a></li>
+            <li><a href="#" (click)="$event.preventDefault()">Blog</a></li>
+            <li><a routerLink="/packages">Pricing</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="destination">
+          <h3>Destination</h3>
+          <ul>
+            <li><a routerLink="/packages" [queryParams]="{ destination: 'Maldives' }">Maldives</a></li>
+            <li><a routerLink="/packages" [queryParams]="{ destination: 'Los Angeles' }">Los Angeles</a></li>
+            <li><a routerLink="/packages" [queryParams]="{ destination: 'Las Vegas' }">Las Vegas</a></li>
+            <li><a routerLink="/packages" [queryParams]="{ destination: 'Toronto' }">Toronto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-3">
+        <div class="quick-form">
+          <h3>Join Our Newsletter</h3>
+          <form (submit)="subscribe($event, email)">
+            <input #email type="email" placeholder="Enter your email" required />
+            <button type="submit">Subscribe</button>
+          </form>
+          @if (subscribed) {
+            <p class="text-success">Thanks for subscribing!</p>
+          }
+          <p>* Will send you weekly updates for your better tour packages.</p>
+        </div>
+      </div>
+    </div>
+    <div class="copy-right">
+      <p>Copyright © 2025 DEPI Travel Project. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

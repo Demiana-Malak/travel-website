@@ -1,0 +1,80 @@
+<!-- ===== HERO SECTION ===== -->
+<header class="hero">
+ 
+
+  <div class="hero-content">
+    <p class="subtitle">SEARCH YOUR</p>
+    <h1>Travel With Us</h1>
+    <div class="scroll-down">
+      <i class="arrow-down"></i>
+    </div>
+  </div>
+</header>
+  <!-- ====== MAIN WRAPPER ====== -->
+<div class="main-wrapper">
+  
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <button (click)="sortBy('date')">Date</button>
+    <button (click)="sortBy('low')">Price Low → High</button>
+    <button (click)="sortBy('high')">Price High → Low</button>
+    <button (click)="sortBy('az')">Name (A–Z)</button>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content-section">
+    <!-- LEFT SIDE: TRAVEL CARDS -->
+    <div class="cards-container">
+      <div class="card" *ngFor="let product of filteredProducts">
+        <div class="card-image">
+          <a [routerLink]="['/packages-details']">
+            <img [src]="product.image" alt="" />
+          </a>
+          <div class="card-overlay">
+            <span>📅 {{ product.date }}</span>
+            <span>🗓️ {{ product.month }}</span>
+            <span>👤 {{ product.people }} People</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <h3 class="card-title">{{ product.title }}</h3>
+          <p class="card-desc">{{ product.description }}</p>
+          <div class="card-footer">
+            <span class="price">{{ product.price }} $</span>
+            <span class="rating">⭐ {{ product.rating }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: FILTER FORM -->
+    <div class="filter-section">
+      <h3>Plan Your Trip</h3>
+      <p class="filter-desc">
+        In spite of the fact that space presentation is not known. 
+        Nature habit dant coetis aut magni ides velit? Quis 
+        quibusdam magna iste reque ipsa dicta.
+      </p>
+      <input type="text" placeholder="Search Tour" [(ngModel)]="destination" (input)="filterProducts()" />
+
+      <input type="text" placeholder="Where To?" [(ngModel)]="searchTerm" (input)="filterProducts()" />
+
+      <input type="date" [(ngModel)]="selectedDate" (change)="filterProducts()" />
+
+      <h4 class="price-title">Filter by Price</h4>
+      <div class="price-inputs">
+        <input type="number" min="0" placeholder="Min Price" [(ngModel)]="minPrice" (input)="filterProducts()" />
+        <span class="dash">—</span>
+        <input type="number" max="2500" placeholder="Max Price" [(ngModel)]="priceRange" (input)="filterProducts()" />
+      </div>
+
+      <button class="book-btn" routerLink="/packages-details">Book Now</button>
+
+      <!-- IMAGE UNDER FILTER -->
+      <div class="travel-image">
+        <img src="assets/product/travel-set.png" alt="Travel Items" />
+      </div>
+    </div>
+  </div>
+</div>
